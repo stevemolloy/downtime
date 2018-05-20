@@ -17,31 +17,33 @@ app.use(logger);
 
 // View Engine
 app.set('view engine', 'ejs');
-app.set('views',path.join(__dirname,'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Body Parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // Set static path
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Validator Middleware
 app.use(expressValidator({
-    errorFormatter: function(param, msg, value){
-        var namespace = param.split('.')
-        , root = namespace.shift()
-        , formParam = root;
+  errorFormatter: function(param, msg, value) {
+    var namespace = param.split('.'),
+      root = namespace.shift(),
+      formParam = root;
 
-        while (namespace.length){
-            formParam += '[' + namespace.shift() + ']';
-        }
-        return {
-            param : formParam,
-            msg :msg,
-            value : value
-        };
+    while (namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
     }
+    return {
+      param: formParam,
+      msg: msg,
+      value: value
+    };
+  }
 }));
 
 /*var users = [
@@ -65,46 +67,48 @@ app.use(expressValidator({
     }
 ]
 */
-app.get('/', function(req, res){
-    res.render('index',{
-        title: 'Downtime',
-        //events:events
-    });
+app.get('/', function(req, res) {
+  res.render('index', {
+    title: 'Downtime',
+    //events:events
+  });
 });
 
-app.post('/event/add',function(req,res){
+app.post('/event/add', function(req, res) {
 
-    req.checkBody('alarm', 'Alarm name is required.').notEmpty();
-    req.checkBody('code', 'Code is required.').notEmpty();
-    req.checkBody('downtime', 'Downtime is required.').notEmpty();
+  req.checkBody('alarm', 'Alarm name is required.').notEmpty();
+  req.checkBody('code', 'Code is required.').notEmpty();
+  req.checkBody('downtime', 'Downtime is required.').notEmpty();
 
-    var newEvent = {
-        alarm: req.body.alarm,
-        code: req.body.code,
-        downtime: req.body.downtime
-    }
+  var newEvent = {
+    alarm: req.body.alarm,
+    code: req.body.code,
+    downtime: req.body.downtime
+  }
 
-    console.log(newEvent);
+  console.log(newEvent);
 
-//    fs.writeFileSync('downtimelog.txt', newEvent.alarm, {'flags': 'a+'});
-    var stream = fs.createWriteStream("downtimelog.txt", {flags:'a'});
-    stream.write(newEvent.alarm+', '+ newEvent.code+', '+ newEvent.downtime+',')
-    stream.write("\n")
-    /*
-    fs.writeFile('downtimelog.txt', newEvent.code, (err) => {  
-        //if error
-        if (err) throw err;
-        //if success
-        console.log('code saved');
-    })
-    fs.writeFile('downtimelog.txt', newEvent.downtime, (err) => {  
-        //if error
-        if (err) throw err;
-        //if success
-        console.log('downtime saved');
-    })*/
-    });
+  //    fs.writeFileSync('downtimelog.txt', newEvent.alarm, {'flags': 'a+'});
+  var stream = fs.createWriteStream("downtimelog.txt", {
+    flags: 'a'
+  });
+  stream.write(newEvent.alarm + ', ' + newEvent.code + ', ' + newEvent.downtime + ',')
+  stream.write("\n")
+  /*
+  fs.writeFile('downtimelog.txt', newEvent.code, (err) => {
+      //if error
+      if (err) throw err;
+      //if success
+      console.log('code saved');
+  })
+  fs.writeFile('downtimelog.txt', newEvent.downtime, (err) => {
+      //if error
+      if (err) throw err;
+      //if success
+      console.log('downtime saved');
+  })*/
+});
 
-app.listen(3000,function(){
-    console.log('Server started on port 3000...');
+app.listen(3000, function() {
+  console.log('Server started on port 3000...');
 })
