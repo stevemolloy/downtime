@@ -4,13 +4,16 @@
   "description": "An application for logging and viewing downtime at MAX IV.",
   "main": "app.js",
   "scripts": {
+    "start": "node ./app.js",
+    "devstart": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "body-parser": "*",
     "ejs": "^2.6.1",
     "express": "*",
-    "express-validator": "^5.2.0"
+    "express-validator": "^5.2.0",
+    "nodemon": "^1.17.4"
   },
   "repository": {
     "type": "git",
