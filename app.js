@@ -107,6 +107,7 @@ app.post('/event/add', function(req, res) {
       //if success
       console.log('downtime saved');
   })*/
+  res.redirect('/');
 });
 
 app.listen(3000, function() {
