@@ -1,8 +1,26 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/downtime');
+let db = mongoose.connection;
+
+
+//Check connection
+db.once('open', function(){
+    console.log('Connected to MongoDB');
+})
+
+// Check for DB erros
+db.on('error', function(err){
+    console.log('err');
+});
 
 // Initialize app
 const app = express();
+
+// Bring in Models
+let Logbook = require('./models/log');
 
 // Load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -10,35 +28,15 @@ app.set('view engine', 'pug');
 
 // Home Route
 app.get('/',function(req, res){
-    let log = [
-        {
-            id:1,
-            //timestamp:25,
-            //duration: 36,
-            //code: 'VAC',
-            description: 'This is what happened',
-            //solution: 'This is how it was solved'
-        },
-        {
-            id:2,
-            //timestamp:25,
-            //duration: 36,
-            //code: 'VAC',
-            description: 'This is what happened',
-            //solution: 'This is how it was solved'
-        },
-        {
-            id:3,
-            //timestamp:25,
-            //duration: 36,
-            //code: 'VAC',
-            description: 'This is what happened',
-            //solution: 'This is how it was solved'
+    Logbook.find({}, function(err,logbook){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('index',{
+                title: 'Hello!!!',
+                logbook: logbook
+            });    
         }
-    ];
-    res.render('index',{
-        title: 'Hello!!!',
-        log: log
     });
 });
 
