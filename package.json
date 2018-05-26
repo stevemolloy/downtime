@@ -1,0 +1,23 @@
+{
+  "name": "downtime",
+  "version": "1.0.0",
+  "description": "An application for logging and viewing downtime at MAX IV.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rasmuskh/downtime.git"
+  },
+  "author": "Rasmus Kjaer Hoeier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rasmuskh/downtime/issues"
+  },
+  "homepage": "https://github.com/Rasmuskh/downtime#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pug": "^2.0.3"
+  }
+}
