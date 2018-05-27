@@ -4,6 +4,8 @@ extends layout
 block content
   h1 #{title}
   ul
-    each entry, i in logbook
-      li= entry.timestamp
+    each downtimeevent, i in downtimeevents
+      li= downtimeevent.solution
+    else
+      li there are no values
 

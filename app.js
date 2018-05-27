@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/downtime');
+//Connect to operations knowledge base
+mongoose.connect('mongodb://localhost/maxivkb');
 let db = mongoose.connection;
 
 
@@ -20,7 +21,7 @@ db.on('error', function(err){
 const app = express();
 
 // Bring in Models
-let Logbook = require('./models/log');
+let downtimeevent = require('./models/downtimeevents');
 
 // Load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -28,14 +29,14 @@ app.set('view engine', 'pug');
 
 // Home Route
 app.get('/',function(req, res){
-    Logbook.find({}, function(err,logbook){
+    downtimeevent.find({}, function(err,downtimeevents){
         if(err){
             console.log(err);
         } else{
             res.render('index',{
                 title: 'Hello!!!',
-                logbook: logbook
-            });    
+                downtimeevents:downtimeevents
+            });
         }
     });
 });
