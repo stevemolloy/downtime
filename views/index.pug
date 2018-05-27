@@ -3,9 +3,9 @@ extends layout
 
 block content
   h1 #{title}
-  ul
+  ul.list-group
     each downtimeevent, i in downtimeevents
-      li= downtimeevent.solution
+      li.list-group-item= downtimeevent.solution
     else
-      li there are no values
+      li.list-group-item there are no values
 
