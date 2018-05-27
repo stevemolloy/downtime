@@ -22,7 +22,7 @@ let downtimeeventSchema= mongoose.Schema({
         type:String,
         required: true
     },
-    downtime:{
+    duration:{
         type:Number,
         required: true
     }

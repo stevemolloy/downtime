@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser=require('body-parser')
 
 //Connect to operations knowledge base
 mongoose.connect('mongodb://localhost/maxivkb');
@@ -21,15 +22,21 @@ db.on('error', function(err){
 const app = express();
 
 // Bring in Models
-let downtimeevent = require('./models/downtimeevents');
+let Downtimeevent = require('./models/downtimeevents');
 
 // Load view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Body Parser Middleware
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 // Home Route
 app.get('/',function(req, res){
-    downtimeevent.find({}, function(err,downtimeevents){
+    Downtimeevent.find({}, function(err,downtimeevents){
         if(err){
             console.log(err);
         } else{
@@ -45,6 +52,25 @@ app.get('/',function(req, res){
 app.get('/submit',function(req, res){
     res.render('submit', {
         title: 'submit entry',
+    });
+});
+
+// Add Submit POST Route
+app.post('/submit',function(req, res){
+    let downtimeevent = new Downtimeevent();
+    downtimeevent.code = req.body.code
+    downtimeevent.operator = req.body.operator
+    downtimeevent.description = req.body.description
+    downtimeevent.solution = req.body.solution
+    downtimeevent.timestamp = req.body.timestamp
+    downtimeevent.duration = req.body.duration
+
+    downtimeevent.save(function(err){
+        if(err){
+            console.log(err)
+        } else{
+            res.redirect('/');
+        }
     });
 });
 
