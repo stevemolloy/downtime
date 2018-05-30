@@ -3,9 +3,36 @@ extends layout
 
 block content
   h1 #{title}
-  ul.list-group
-    each downtimeevent, i in downtimeevents
-      li.list-group-item= downtimeevent.solution
-    else
-      li.list-group-item there are no values
-
+  //- ul.list-group
+  //-   each downtimeevent, i in downtimeevents
+  //-     li.list-group-item= downtimeevent.solution
+  //-   else
+  //-     li.list-group-item there are no values
+  section.container
+    h2 Light Javascript Table Filter
+    input.light-table-filter(type='search', data-table='order-table', placeholder='Filter')
+    //input#myInput(type='text', onkeyup='myFunction()', placeholder='Search for names..')
+    table.order-table.table
+      thead
+        tr
+          th timestamp
+          th code
+          th duration
+          th description
+          th solution
+          th operator
+      tbody
+        each downtimeevent, i in downtimeevents
+          tr
+            td 
+              a #{downtimeevent.timestamp}
+            td
+              a #{downtimeevent.code}
+            td
+              a #{downtimeevent.duration}
+            td
+              a #{downtimeevent.description}
+            td
+              a #{downtimeevent.solution}
+            td
+              a #{downtimeevent.operator}
