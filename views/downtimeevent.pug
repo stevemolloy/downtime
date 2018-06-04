@@ -1,4 +1,9 @@
 extends layout
 
 block content
-  h1=downtimeevent.code
+  .container
+    h5 Timestamp = #{downtimeevent.timestamp}
+    h5 Error code = #{downtimeevent.code}
+    h5 Downtime duration = #{downtimeevent.duration} hours
+    p Description: #{downtimeevent.description}
+    p Solution: #{downtimeevent.solution}
