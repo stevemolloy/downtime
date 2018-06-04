@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser=require('body-parser')
+const bodyParser=require('body-parser');
+//const luxbar = require('luxbar');
 
 //Connect to operations knowledge base
 mongoose.connect('mongodb://localhost/maxivkb');
@@ -34,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// Set Public Folde
+// Set Public Folder
 app.use(express.static(path.join(__dirname,'public')));
 
 // Home Route
@@ -44,12 +45,21 @@ app.get('/',function(req, res){
             console.log(err);
         } else{
             res.render('index',{
-                title: 'Hello!!!',
                 downtimeevents:downtimeevents
             });
         }
     });
 });
+
+// Get single Article
+app.get('/downtimeevent/:id', function(req, res){
+    Downtimeevent.findById(req.params.id, function(err, downtimeevent){
+        res.render('downtimeevent',{
+            downtimeevent:downtimeevent  
+        });
+    });
+});
+
 
 //Add Route
 app.get('/submit',function(req, res){

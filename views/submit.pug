@@ -2,24 +2,25 @@ extends layout
 
 
 block content
-  h1 #{title}
-  form(method='POST',action='/submit')
-    #form-group
-      label Code:
-      input.form-control(name='code', type='text')
-    #form-group
-      label Operator:
-      input.form-control(name='operator', type='text')
-    #form-group
-      label Description:
-      textarea.form-control(name='description')
-    #form-group
-      label Solution:
-      textarea.form-control(name='solution')
-    #form-group
-      label Timestamp:
-      input.form-control(name='timestamp', type='text')
-    #form-group
-      label Duration:
-      input.form-control(name='duration', type='text')
-    input.btn.btn-primary(type='submit',value='Submit')
+  .container
+    h1 #{title}
+    form(method='POST',action='/submit')
+      #form-group
+        label Code:
+        input.form-control(name='code', type='text')
+      #form-group
+        label Operator:
+        input.form-control(name='operator', type='text')
+      #form-group
+        label Description:
+        textarea.form-control(name='description')
+      #form-group
+        label Solution:
+        textarea.form-control(name='solution')
+      #form-group
+        label Timestamp:
+        input.form-control(name='timestamp', type='text')
+      #form-group
+        label Duration:
+        input.form-control(name='duration', type='text')
+      input.btn.btn-primary(type='submit',value='Submit')
