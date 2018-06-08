@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser=require('body-parser');
-//const luxbar = require('luxbar');
 
 //Connect to operations knowledge base
 mongoose.connect('mongodb://localhost/maxivkb');

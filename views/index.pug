@@ -2,20 +2,21 @@ extends layout
 
 
 block content
+
   .container
-    h2 Downtime Table
-    input.light-table-filter(type='search', data-table='order-table', placeholder='Filter')
-    //input#myInput(type='text', onkeyup='myFunction()', placeholder='Search for names..')
-    table.order-table.table
+
+
+
+    h2 Downtime Table1
+
+    table#example.display(style='width:100%')
       thead
-        tr
-          th code
-          th date
-          th time
-          th duration
-          //th description
-          //th solution
-          th operator
+          tr
+            th code
+            th date
+            th time
+            th duration
+            th operator
       tbody
         each downtimeevent, i in downtimeevents
           tr
@@ -27,9 +28,12 @@ block content
               a #{downtimeevent.time}
             td
               a #{downtimeevent.duration}
-            //td
-            //  a #{downtimeevent.description}
-            //td
-            //  a #{downtimeevent.solution}
             td
               a #{downtimeevent.operator}
+    //datatable stuff
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+    script.
+      $(document).ready(function() {
+      $('#example').DataTable();
+      } );
