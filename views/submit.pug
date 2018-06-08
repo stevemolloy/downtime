@@ -3,7 +3,7 @@ extends layout
 
 block content
   .container
-    h1 #{title}
+    h2 #{title}
     form(method='POST',action='/submit')
       #form-group
         label Code:
@@ -18,9 +18,12 @@ block content
         label Solution:
         textarea.form-control(name='solution')
       #form-group
-        label Timestamp:
-        input.form-control(name='timestamp', type='text')
+        label Date:
+        input.form-control(name='date', type='date')#date
       #form-group
-        label Duration:
-        input.form-control(name='duration', type='text')
+        label Time:
+        input.form-control(name='time', type='number')#time
+      #form-group
+        label Duration (hours):
+        input.form-control(name='duration', type='number')
       input.btn.btn-primary(type='submit',value='Submit')

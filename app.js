@@ -51,7 +51,7 @@ app.get('/',function(req, res){
     });
 });
 
-// Get single Article
+// Single event Route
 app.get('/downtimeevent/:id', function(req, res){
     Downtimeevent.findById(req.params.id, function(err, downtimeevent){
         res.render('downtimeevent',{
@@ -61,10 +61,10 @@ app.get('/downtimeevent/:id', function(req, res){
 });
 
 
-//Add Route
+//Add submit Route
 app.get('/submit',function(req, res){
     res.render('submit', {
-        title: 'submit entry',
+        title: 'Submit entry',
     });
 });
 
@@ -75,8 +75,10 @@ app.post('/submit',function(req, res){
     downtimeevent.operator = req.body.operator
     downtimeevent.description = req.body.description
     downtimeevent.solution = req.body.solution
-    downtimeevent.timestamp = req.body.timestamp
+    downtimeevent.date = req.body.date
+    downtimeevent.time = req.body.time
     downtimeevent.duration = req.body.duration
+
 
     downtimeevent.save(function(err){
         if(err){
@@ -87,6 +89,19 @@ app.post('/submit',function(req, res){
     });
 });
 
+//Add About Route
+app.get('/about',function(req, res){
+    res.render('about', {
+        title: 'About',
+    });
+});
+
+//Add Edit Route
+app.get('/edit',function(req, res){
+    res.render('edit', {
+        title: 'Edit',
+    });
+});
 
 //start server
 app.listen(3000, function(){

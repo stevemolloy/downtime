@@ -18,8 +18,12 @@ let downtimeeventSchema= mongoose.Schema({
         type:String,
         required: true
     },
-    timestamp:{
-        type:String,
+    date:{
+        type:Date,
+        required: true
+    },
+    time:{
+        type:Number,
         required: true
     },
     duration:{

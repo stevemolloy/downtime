@@ -2,31 +2,34 @@ extends layout
 
 
 block content
-  section.container
+  .container
     h2 Downtime Table
     input.light-table-filter(type='search', data-table='order-table', placeholder='Filter')
     //input#myInput(type='text', onkeyup='myFunction()', placeholder='Search for names..')
     table.order-table.table
       thead
         tr
-          th timestamp
           th code
+          th date
+          th time
           th duration
-          th description
-          th solution
+          //th description
+          //th solution
           th operator
       tbody
         each downtimeevent, i in downtimeevents
           tr
             td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.timestamp}
+              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.code}
             td
-              a #{downtimeevent.code}
+              a #{downtimeevent.date}
+            td
+              a #{downtimeevent.time}
             td
               a #{downtimeevent.duration}
-            td
-              a #{downtimeevent.description}
-            td
-              a #{downtimeevent.solution}
+            //td
+            //  a #{downtimeevent.description}
+            //td
+            //  a #{downtimeevent.solution}
             td
               a #{downtimeevent.operator}
