@@ -10,3 +10,7 @@ block content
       li Downtime duration = #{downtimeevent.duration} hours
       li Description: #{downtimeevent.description}
       li Solution: #{downtimeevent.solution}
+
+    hr
+    a.btn.btn-primary(href='/downtimeevent/edit/'+downtimeevent._id) Edit
+    a.btn.btn-danger.delte-downtimeevent(href='#',data-id=downtimeevent._id) Delete

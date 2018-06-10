@@ -60,6 +60,8 @@ app.get('/downtimeevent/:id', function(req, res){
 });
 
 
+
+
 //Add submit Route
 app.get('/submit',function(req, res){
     res.render('submit', {
@@ -88,6 +90,41 @@ app.post('/submit',function(req, res){
     });
 });
 
+// Edit events route
+app.get('/downtimeevent/edit/:id', function(req, res){
+    Downtimeevent.findById(req.params.id, function(err, downtimeevent){
+        res.render('edit_downtimeevent',{
+            title:'Edit Downtimeevent',
+            downtimeevent:downtimeevent  
+        });
+    });
+});
+
+// update Submissions POST Route
+app.post('/downtimeevent/edit/:id',function(req, res){
+    let downtimeevent  = {}
+    downtimeevent.code = req.body.code
+    downtimeevent.operator = req.body.operator
+    downtimeevent.description = req.body.description
+    downtimeevent.solution = req.body.solution
+    downtimeevent.date = req.body.date
+    downtimeevent.time = req.body.time
+    downtimeevent.duration = req.body.duration
+
+    let query ={_id:req.params.id}
+
+    
+    Downtimeevent.update(query, downtimeevent, function(err){
+        if(err){
+            console.log(err)
+        } else{
+            res.redirect('/');
+        }
+    });
+});
+
+
+
 //Add About Route
 app.get('/about',function(req, res){
     res.render('about', {
@@ -95,12 +132,6 @@ app.get('/about',function(req, res){
     });
 });
 
-//Add Edit Route
-app.get('/edit',function(req, res){
-    res.render('edit', {
-        title: 'Edit',
-    });
-});
 
 //start server
 app.listen(3000, function(){

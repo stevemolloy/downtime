@@ -2,3 +2,9 @@
 An application for logging and viewing downtime at MAX IV.
 
 Starts an Express server for logging downtime
+
+
+Stuff to sort out:
+- Data not auto filled in, when an old event is opened for editing.
+- When sorting datatable by date the date is treated like a string and sorted alphabetically.
+- Datatable layout is not particularly pretty. Needs to be made nicer.
