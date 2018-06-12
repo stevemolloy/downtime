@@ -7,7 +7,7 @@ block content
 
 
 
-    h2 Downtime Table1
+    h2 Downtime Table
 
     table#example.display(style='width:100%')
       thead
@@ -17,7 +17,7 @@ block content
             th description
             th solution
             th time
-            th duration
+            th duration (hours)
             th operator
       tbody
         each downtimeevent, i in downtimeevents
@@ -37,10 +37,11 @@ block content
             td
               a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.operator}
     //datatable stuff
-    //script(src='https://code.jquery.com/jquery-3.3.1.js')
     script(src='/bower_components/jquery/dist/jquery.js')      
     script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
     script.
       $(document).ready(function() {
         $('#example').DataTable();
       });
+
+
