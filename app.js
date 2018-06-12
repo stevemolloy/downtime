@@ -117,12 +117,22 @@ app.post('/downtimeevent/edit/:id',function(req, res){
     Downtimeevent.update(query, downtimeevent, function(err){
         if(err){
             console.log(err)
-        } else{
+        } else{ 
             res.redirect('/');
         }
     });
 });
 
+app.delete('/downtimeevent/:id', function(req, res){
+    let query = {_id:req.params.id}
+
+    Article.remove(query, function(err){
+        if(err){
+            console.log(err);
+        }
+        res.send('Success')
+    });
+});
 
 
 //Add About Route
