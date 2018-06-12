@@ -1,0 +1,22 @@
+{
+  "name": "downtime",
+  "description": "An application for logging and viewing downtime at MAX IV.",
+  "main": "app.js",
+  "authors": [
+    "Rasmus Kjaer Hoeier"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Rasmuskh/downtime",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.1"
+  }
+}
