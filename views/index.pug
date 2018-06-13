@@ -33,15 +33,4 @@ block content
             td
               a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.time}
             td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.duration}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.operator}
-    //datatable stuff
-    script(src='/bower_components/jquery/dist/jquery.js')      
-    script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
-    script.
-      $(document).ready(function() {
-        $('#example').DataTable();
-      });
-
-
+              a #{downtimeevent.operator}

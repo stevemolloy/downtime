@@ -1,4 +1,4 @@
-let mongoose = require('mongoose')
+let mongoose = require('mongoose');
 
 // downtime entry structure schema
 let downtimeeventSchema= mongoose.Schema({
