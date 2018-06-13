@@ -2,31 +2,35 @@ extends layout
 
 
 block content
-
+  link(rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css')
   .container
 
 
 
-    h2 Downtime Table1
+    h2 Downtime Table
 
     table#example.display(style='width:100%')
       thead
           tr
-            th code
             th date
+            th code
+            th description
+            th solution
             th time
-            th duration
+            th duration (hours)
             th operator
       tbody
         each downtimeevent, i in downtimeevents
           tr
             td
+              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.date}
+            td
               a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.code}
             td
-              a #{downtimeevent.date}
+              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.description}
             td
-              a #{downtimeevent.time}
+              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.solution}
             td
-              a #{downtimeevent.duration}
+              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.time}
             td
               a #{downtimeevent.operator}
