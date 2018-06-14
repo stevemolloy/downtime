@@ -9,7 +9,7 @@ block content
         label Code:
         input.form-control(name='code', type='text')
       #form-group
-        label Operator:
+        label Reported by:
         input.form-control(name='operator', type='text')
       #form-group
         label Description:
@@ -25,6 +25,6 @@ block content
         input.form-control(name='time', type='time')#time
       #form-group
         label Duration (hours):
-        input.form-control(name='duration', type='number', step=0.25)
+        input.form-control(name='duration', type='number', step=0.25, min=0)
       br
       input.btn.btn-primary.btn-lg(type='submit',value='Submit')

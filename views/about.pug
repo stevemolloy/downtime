@@ -4,11 +4,16 @@ extends layout
 block content
   section.container
     h2 About
-    p This application is for logging and viewing downtime events.
+    h5 EVENTS
+    p This application is for logging and viewing downtime events. Each event has a number of parameters which contain information about what type of event it was, how it was solved, how long it took, when it occured and who has reported it.
     ul
-      li Code = the code for the type of event
+      li Code: the code for the type of event
       li Description: A brief description of what happened.
-      li Solution: A brief description of how the problem was solved. The more details you give the more useful this tool will be
-      li Date and Time: Date as well as time of day.
+      li Solution: A brief description of how the problem was solved. The more details you give the more useful this tool will be for trouble shooting in the future.
+      li Date and Time: Date and time where the event took placeof day.
       li Duration: total downtime in hours.
+    h5 TABLE
+    ul
+      li Each column on the main page can be used for sorting the downtime table.
+      li The search bar is not case sensitive and matches what you type in with the data contained in the parameters and treats whitespaces as wildcards. You can type in searchterms related to different parameters as long as they are separated by whitespace. 
 
