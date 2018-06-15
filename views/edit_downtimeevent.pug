@@ -18,11 +18,17 @@ block content
         label Solution:
         textarea.form-control(name='solution')= downtimeevent.solution
       #form-group
+        label Cause:
+        textarea.form-control(name='cause')= downtimeevent.cause
+      #form-group
+        label Long term effects:
+        textarea.form-control(name='longtermeffects')= downtimeevent.longtermeffects
+      #form-group
         label Date:
         input.form-control(name='date', type='date',value=downtimeevent.date)#date
       #form-group
         label Time:
-        input.form-control(name='time', type='number',value=downtimeevent.time)#time
+        input.form-control(name='time', type='time',value=downtimeevent.time)#time
       #form-group
         label Duration (hours):
         input.form-control(name='duration', type='number',value=downtimeevent.duration)

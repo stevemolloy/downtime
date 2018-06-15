@@ -3,13 +3,37 @@ extends layout
 block content
   .container
     h2 Detailed view
-    ul
-      li date = #{downtimeevent.date}
-      li time = #{downtimeevent.time}
-      li Error code = #{downtimeevent.code}
-      li Downtime duration = #{downtimeevent.duration} hours
-      li Description: #{downtimeevent.description}
-      li Solution: #{downtimeevent.solution}
+    .container
+      table#verticalTable
+        tbody
+          tr
+            th date:
+            td #{downtimeevent.date}
+          tr
+            th time:
+            td #{downtimeevent.time}
+          tr
+            th code:
+            td #{downtimeevent.code}
+          tr
+            th cause:
+            td #{downtimeevent.cause}
+          tr
+            th duration:
+            td #{downtimeevent.duration}
+          tr
+            th Author:
+            td #{downtimeevent.operator}
+          tr
+            th description:
+            td #{downtimeevent.description}
+          tr
+            th solution:
+            td #{downtimeevent.solution}
+          tr
+            th long term effects:
+            td #{downtimeevent.longtermeffects}
+
 
     hr
     a.btn.btn-warning(href='/downtimeevent/edit/'+downtimeevent._id) Edit

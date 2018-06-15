@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 let downtimeeventSchema= mongoose.Schema({
     code:{
         type: String,
-        required: true
+        required: false
     },
     operator:{
         type: String,
@@ -12,11 +12,19 @@ let downtimeeventSchema= mongoose.Schema({
     },
     description:{
         type:String,
-        required: true
+        required: false
+    },
+    cause:{
+        type:String,
+        required: false
     },
     solution:{
         type:String,
-        required: true
+        required: false
+    },
+    longtermeffects:{
+        type:String,
+        required: false
     },
     date:{
         type:Date,
@@ -28,7 +36,7 @@ let downtimeeventSchema= mongoose.Schema({
     },
     duration:{
         type:Number,
-        required: true
+        required: false
     }
 });
 

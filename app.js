@@ -11,7 +11,7 @@ let db = mongoose.connection;
 //Check connection
 db.once('open', function(){
     console.log('Connected to MongoDB');
-})
+});
 
 // Check for DB erros
 db.on('error', function(err){
@@ -72,18 +72,20 @@ app.get('/submit',function(req, res){
 // Add Submit POST Route
 app.post('/submit',function(req, res){
     let downtimeevent = new Downtimeevent();
-    downtimeevent.code = req.body.code
-    downtimeevent.operator = req.body.operator
-    downtimeevent.description = req.body.description
-    downtimeevent.solution = req.body.solution
-    downtimeevent.date = req.body.date
-    downtimeevent.time = req.body.time
-    downtimeevent.duration = req.body.duration
+    downtimeevent.code = req.body.code;
+    downtimeevent.cause = req.body.cause;
+    downtimeevent.operator = req.body.operator;
+    downtimeevent.description = req.body.description;
+    downtimeevent.solution = req.body.solution;
+    downtimeevent.longtermeffects = req.body.longtermeffects;
+    downtimeevent.date = req.body.date;
+    downtimeevent.time = req.body.time;
+    downtimeevent.duration = req.body.duration;
 
 
     downtimeevent.save(function(err){
         if(err){
-            console.log(err)
+            console.log(err);
         } else{
             res.redirect('/');
         }
@@ -103,20 +105,22 @@ app.get('/downtimeevent/edit/:id', function(req, res){
 // update Submissions POST Route
 app.post('/downtimeevent/edit/:id',function(req, res){
     let downtimeevent  = {}
-    downtimeevent.code = req.body.code
-    downtimeevent.operator = req.body.operator
-    downtimeevent.description = req.body.description
-    downtimeevent.solution = req.body.solution
-    downtimeevent.date = req.body.date
-    downtimeevent.time = req.body.time
-    downtimeevent.duration = req.body.duration
+    downtimeevent.code = req.body.code;
+    downtimeevent.cause = req.body.cause;
+    downtimeevent.operator = req.body.operator;
+    downtimeevent.description = req.body.description;
+    downtimeevent.solution = req.body.solution;
+    downtimeevent.longtermeffects = req.body.longtermeffects;
+    downtimeevent.date = req.body.date;
+    downtimeevent.time = req.body.time;
+    downtimeevent.duration = req.body.duration;
 
-    let query ={_id:req.params.id}
+    let query ={_id:req.params.id};
 
     
     Downtimeevent.update(query, downtimeevent, function(err){
         if(err){
-            console.log(err)
+            console.log(err);
         } else{ 
             res.redirect('/');
         }
@@ -124,13 +128,13 @@ app.post('/downtimeevent/edit/:id',function(req, res){
 });
 
 app.delete('/downtimeevent/:id', function(req, res){
-    let query = {_id:req.params.id}
+    let query = {_id:req.params.id};
 
     Downtimeevent.remove(query, function(err){
         if(err){
             console.log(err);
         }
-        res.send('Success')
+        res.send('Success');
     });
 });
 
