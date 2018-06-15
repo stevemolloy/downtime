@@ -36,12 +36,40 @@ block content
               a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.duration}
             td
               a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.operator}
+       
     //datatable stuff
     script(src='/bower_components/jquery/dist/jquery.js')
     script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
     script.
       $(document).ready(function() {
-        $('#example').DataTable();
-      });
+        // Setup - add a text input to each footer cell
+        $('#example thead th').each( function () {
+          var title = $(this).text();
+          $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+      } );
+
+      // DataTable
+      var table = $('#example').DataTable();
+
+      // Apply the search
+      table.columns().every( function () {
+        var that = this;
+
+        $( 'input', this.header() ).on( 'keyup change', function () {
+          if ( that.search() !== this.value ) {
+            that
+              .search( this.value )
+              .draw();
+            }
+          } );
+        } );
+      } );
+    
+
+
+    //- script.
+    //-   $(document).ready(function() {
+    //-     $('#example').DataTable();
+    //-   });
 
 
