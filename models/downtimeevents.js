@@ -27,7 +27,7 @@ let downtimeeventSchema= mongoose.Schema({
         required: false
     },
     date:{
-        type:Date,
+        type:String,
         required: true
     },
     time:{
