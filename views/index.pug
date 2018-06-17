@@ -8,7 +8,23 @@ block content
 
 
     h2 Downtime Table
-
+    //Input table
+    table
+      tbody
+        tr
+          td Minimum duration:
+          td
+            input#min(name='minduration', type='number', value=0, min=0)
+          td Maximum duration:
+          td
+            input#max(name='maxduration', type='number',value=999, min=0)
+          td Minimum date:
+          td
+            input#min(name='mindate', type='date')
+          td Maximum date:
+          td
+            input#max(name='maxdate', type='date')
+    //The downtime event table
     table#example.display(style='width:100%')
       thead
           tr
@@ -23,27 +39,28 @@ block content
             th(width='10%') Author
       tbody
         each downtimeevent, i in downtimeevents
-          tr
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.description}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.solution}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.longtermeffects}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.date}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.time}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.code}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.cause}
-     
+          if (downtimeevent.duration < 5000)
+            tr
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.description}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.solution}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.longtermeffects}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.date}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.time}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.code}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.cause}
 
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.duration}
-            td
-              a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.operator}
+
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.duration}
+              td
+                a(href="/downtimeevent/"+downtimeevent._id) #{downtimeevent.operator}
 
 
        

@@ -1,10 +1,11 @@
 extends layout
 
 block content
+  link(rel='stylesheet' href='https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css')
   .container
     h2 Detailed view
     .container
-      table#verticalTable
+      table#detailedview.display(style='width:100%')
         tbody
           tr
             th date:
@@ -40,5 +41,10 @@ block content
     a.btn.btn-danger.delete-downtimeevent(href='#',data-id=downtimeevent._id) Delete
 
   script(src='/bower_components/jquery/dist/jquery.js')
-  script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
-  script(src='/js/main.js')      
+  script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+  //script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+  script(src='/js/main.js')
+  script.
+    $(document).ready( function () {
+    $('#detailedview').DataTable();
+    } );
